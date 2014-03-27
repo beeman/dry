@@ -1,22 +1,38 @@
 #!/bin/bash
 
 
+die () {
+    echo >&2 "$@"
+    exit 1
+}
+
+[ "$#" -eq 2 ] || die "2 arguments required (createproject ProjectName)"
+
 echo "High & Dry"
 
+# Will be user input
+PROJECT_NAME="DryProject"
+TARGET_DIR="./$PROJECT_NAME"
 
-TARGET_DIR="output"
-
-
-NEW_DIRS=('AppProperties' 'Code' 'CustomControls' 'Forms' 'Resources' 'Views' 'WebContent' 'WebContent/WEB-INF' 'XPages');
+# Define the skeleton dirs & files
+SKEL_DIRS=('AppProperties' 'Code' 'CustomControls' 'Forms' 'Resources' 'Views' 'WebContent' 'WebContent/WEB-INF' 'XPages')
+SKEL_PROJECT="skel/dot.project"
+SKEL_CLASSPATH="skel/dot.classpath"
 
 if [ -d $TARGET_DIR ]; then
 	echo "Target dir exists";
-else 
-	echo "Creating target dir";
+else
+	echo "Creating directory structure";
+	mkdir -pv $TARGET_DIR
 
-	for DIR in ${NEW_DIRS[*]}
+	for DIR in ${SKEL_DIRS[*]}
 	do
-	  mkdir -pv "./$TARGET_DIR/$DIR"
+		echo "$DIR"
+	  mkdir -pv "$TARGET_DIR/$DIR"
 	done
-fi
 
+	echo "Creating project files"
+	cp -v "$SKEL_CLASSPATH" "$TARGET_DIR/.classpath"
+	sed -e "s;%PROJECT_NAME%;$PROJECT_NAME;g" "$SKEL_PROJECT" > "$TARGET_DIR/.project"
+
+fi
