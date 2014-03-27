@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+echo "High & Dry"
+
+
+TARGET_DIR="output"
+
+
+NEW_DIRS=('AppProperties' 'Code' 'CustomControls' 'Forms' 'Resources' 'Views' 'WebContent' 'WebContent/WEB-INF' 'XPages');
+
+if [ -d $TARGET_DIR ]; then
+	echo "Target dir exists";
+else 
+	echo "Creating target dir";
+
+	for DIR in ${NEW_DIRS[*]}
+	do
+	  mkdir -pv "./$TARGET_DIR/$DIR"
+	done
+fi
+
