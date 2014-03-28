@@ -8,9 +8,8 @@ Code generation for XPages
 ### Creating a new project
 
     $ dry create-project <NewProject>
-      - create directories for New Project
-      - create files
-
+      - dry creates directories for NewProject
+      - dry creates project files
 
 
 
@@ -18,8 +17,6 @@ Code generation for XPages
 
     Command         Alias  Description
     create-project  cp     Initialize new project structure
-    create-form     cf     Initialize new project structure
-
 
 ## Project Skeleton
 
