@@ -62,7 +62,14 @@ Code generation for XPages
     </projectDescription>
 
 
-## Extra possible functionality:
+## Must haves:
+
+* Create Domino Form
+* Create Domino View
+* Create XPage
+* Create Java class
+
+## Could haves:
 
 * Automatically initialize / commit git repo
 * Automatically add README.md
