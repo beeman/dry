@@ -11,7 +11,7 @@ die () {
 echo "High & Dry"
 
 # Will be user input
-PROJECT_NAME="DryProject"
+PROJECT_NAME="$2"
 TARGET_DIR="./$PROJECT_NAME"
 
 # Define the skeleton dirs & files
